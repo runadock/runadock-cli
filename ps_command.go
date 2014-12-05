@@ -16,6 +16,7 @@ func NewPSCommand() cli.Command {
 		Usage: "show all container",
 		Flags: []cli.Flag{
 			cli.BoolFlag{Name: "detail, d", Usage: "show long container ids."},
+			cli.BoolFlag{Name: "all, a", Usage: "show even terminated container's."},
 		},
 		Action: func(c *cli.Context) {
 			psCommandFunc(c)
@@ -24,8 +25,13 @@ func NewPSCommand() cli.Command {
 }
 
 func psCommandFunc(c *cli.Context) {
-	detail := c.Bool("detail")
 	url := baseurl + "/api/v1/container"
+
+	detail := c.Bool("detail")
+	all := c.Bool("all")
+	if all {
+		url = url +"?all=true"
+	}
 
 	body := get(url)
 
