@@ -19,13 +19,21 @@ type Container struct {
 	OrderedBy   string `json:"orderedBy"`
 	Plan        string `json:"plan"`
 	Owner       struct {
-		ID            string      `json:"id"`
-		Username      string      `json:"username"`
-		Email         string      `json:"email"`
-		VerifyToken   interface{} `json:"verifyToken"`
-		CountryCode   string      `json:"countryCode"`
-		Admin         bool        `json:"admin"`
-		EmailVerified bool        `json:"emailVerified"`
+		ID string `json:"id"`
+		FirstName string `json:"firstName"`
+		LastName string `json:"lastName"`
+		Street string `json:"street"`
+		Zip string `json:"zip"`
+		City string `json:"city"`
+		Country string `json:"country"`
+		HouseNumber string `json:"houseNumber"`
+		Username string `json:"username"`
+		Email string `json:"email"`
+		VerifyToken interface{} `json:"verifyToken"`
+		CountryCode string `json:"countryCode"`
+		ReceiveEmail bool `json:"receiveEmail"`
+		Admin bool `json:"admin"`
+		EmailVerified bool `json:"emailVerified"`
 	} `json:"owner"`
 	Ports []struct {
 		ID          string `json:"id"`
@@ -34,6 +42,7 @@ type Container struct {
 		Scheme      string `json:"scheme"`
 	} `json:"ports"`
 	Env            []interface{} `json:"env"`
+	Cmd []interface{} `json:"cmd"`
 	PricePerMinute struct {
 		Amount   float32 `json:"amount"`
 		Currency string  `json:"currency"`
@@ -42,7 +51,10 @@ type Container struct {
 		Amount   float32 `json:"amount"`
 		Currency string  `json:"currency"`
 	} `json:"pricePerOrder"`
-	MinutesLeft interface{} `json:"minutesLeft"`
+	Cost struct {
+		Amount float32 `json:"amount"`
+		Currency string `json:"currency"`
+		} `json:"cost"`
 	BuildLog    interface{} `json:"buildLog"`
 }
 
