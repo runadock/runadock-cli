@@ -43,7 +43,8 @@ func runCommandFunc(c *cli.Context) {
 	var container Container
 	err := json.Unmarshal(body, &container)
 	if err != nil {
-		panic("Unable to deserialize describe container response.")
+		fmt.Println("Respone body:" + string(body))
+		panic("Unable to deserialize run container response.")
 	}
 	fmt.Println("created:", container.ID)
 }

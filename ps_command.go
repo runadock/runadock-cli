@@ -38,6 +38,7 @@ func psCommandFunc(c *cli.Context) {
 	var containers []Container
 	err := json.Unmarshal(body, &containers)
 	if err != nil {
+		fmt.Println("Respone body:" + string(body))
 		panic("Unable to deserialize describe container response.")
 	}
 

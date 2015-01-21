@@ -35,6 +35,7 @@ func inspectCommandFunc(c *cli.Context) {
 	var container Container
 	err := json.Unmarshal(body, &container)
 	if err != nil {
+		fmt.Println("Respone body:" + string(body))
 		panic("Unable to deserialize describe container response.")
 	}
 	j, jerr := json.MarshalIndent(container, "", "  ")
