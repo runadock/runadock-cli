@@ -11,5 +11,16 @@ eval $(go env)
 go get github.com/codegangsta/cli
 go get github.com/ryanuber/columnize
 
+mkdir -p bin/win32 bin/darwin-amd64 bin/linux-amd64
+
 SHA=`git rev-parse HEAD`
-go build -o bin/runadock -ldflags "-X main.revision $SHA" .
+GOOS=windows GOARCH=386 go build -o bin/win32/runadock.exe -ldflags "-X main.revision $SHA" .
+GOOS=darwin GOARCH=amd64 go build -o bin/darwin-amd64/runadock -ldflags "-X main.revision $SHA" .
+go build -o bin/linux-amd64/runadock -ldflags "-X main.revision $SHA" .
+
+mkdir -p dist
+rm -rf dist/*
+
+tar -czf dist/runadock-win32.tgz bin/win32/runadock.exe
+tar -czf dist/runadock-darwin-amd64.tgz bin/darwin-amd64/runadock
+tar -czf dist/runadock-linux-amd64.tgz bin/linux-amd64/runadock
