@@ -43,11 +43,13 @@ func main() {
 	}
 
 	if user == "" {
-		fmt.Println("No user given. You can set the Environment Variable RUNADOCK_USER")
+		fmt.Println("No user given. You must set the Environment Variable RUNADOCK_USER")
+		fmt.Println("If you dont hava a runadock.io user already, signup at https://runadock.io .")
 		os.Exit(1)
 	}
 	if apiToken == "" {
-		fmt.Println("No API Token given. You can set the Environment Variable RUNADOCK_TOKEN.")
+		fmt.Println("No API Token given. You must set the Environment Variable RUNADOCK_TOKEN.")
+		fmt.Println("If you dont hava a token already, create one at https://runadock.io .")
 		os.Exit(1)
 	}
 
