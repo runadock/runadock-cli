@@ -18,23 +18,6 @@ type Container struct {
 	Terminated  int64  `json:"terminated"`
 	OrderedBy   string `json:"orderedBy"`
 	Plan        string `json:"plan"`
-	Owner       struct {
-		ID string `json:"id"`
-		FirstName string `json:"firstName"`
-		LastName string `json:"lastName"`
-		Street string `json:"street"`
-		Zip string `json:"zip"`
-		City string `json:"city"`
-		Country string `json:"country"`
-		HouseNumber string `json:"houseNumber"`
-		Username string `json:"username"`
-		Email string `json:"email"`
-		VerifyToken interface{} `json:"verifyToken"`
-		CountryCode string `json:"countryCode"`
-		ReceiveEmail bool `json:"receiveEmail"`
-		Admin bool `json:"admin"`
-		EmailVerified bool `json:"emailVerified"`
-	} `json:"owner"`
 	Ports []struct {
 		ID          string `json:"id"`
 		PrivatePort int    `json:"privatePort"`
